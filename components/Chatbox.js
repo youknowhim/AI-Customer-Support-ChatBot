@@ -22,22 +22,22 @@ export default function Chatbox({
             initial={{ opacity: 0, scale: 0.8, y: 30 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.8, y: 30 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl border border-yellow-300/40"
-            style={{ width: "400px", maxHeight: "600px" }} // Increased width and maxHeight
+            transition={{ duration: 0.3,c ease: "easeOut" }}
+            className="bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl border border-blue-300/40"
+            style={{ width: "400px", maxHeight: "600px" }}
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-yellow-500 to-orange-600 text-white p-4 rounded-t-2xl flex justify-between items-center shadow-md">
+            <div className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white p-4 rounded-t-2xl flex justify-between items-center shadow-md">
               <div className="flex items-center space-x-2">
-                <div className="w-4 h-4 bg-green-400 rounded-full animate-pulse" /> {/* Slightly larger indicator */}
-                <h3 className="text-base font-semibold">Solar Support ☀️</h3> {/* Increased font size */}
+                <div className="w-4 h-4 bg-green-400 rounded-full animate-pulse" />
+                <h3 className="text-base font-semibold">VoyageAI Assistant ✈️</h3>
               </div>
               <button
                 onClick={() => setIsChatOpen(false)}
                 className="hover:bg-white/20 rounded-full p-1 transition duration-200"
               >
                 <svg
-                  className="w-6 h-6" // Increased icon size
+                  className="w-6 h-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -55,15 +55,14 @@ export default function Chatbox({
             {/* Messages */}
             <div
               className="p-5 overflow-y-auto bg-gradient-to-b from-gray-50 to-white"
-              style={{ maxHeight: "450px" }} // Increased maxHeight for message area
+              style={{ maxHeight: "450px" }}
             >
               <div className="space-y-4">
                 {messages.length === 0 && !isLoading && (
                   <div className="text-center text-gray-500 text-base py-8">
                     <p>
-                      Hi there 👋 I’m here to help you with solar panels,
-                      installation, pricing, and energy savings. How can I
-                      assist you today?
+                      Hi there 👋 I'm your AI travel assistant. Ask me about
+                      tour packages, flights, hotels, or destination tips!
                     </p>
                   </div>
                 )}
@@ -81,11 +80,11 @@ export default function Chatbox({
                     <div
                       className={`max-w-[80%] px-4 py-3 rounded-xl shadow-sm ${
                         msg.type === "user"
-                          ? "bg-gradient-to-r from-yellow-500 to-orange-500 text-white"
+                          ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white"
                           : "bg-white border border-gray-200 text-gray-800"
                       }`}
                     >
-                      <div className="text-base leading-relaxed">{msg.text}</div> {/* Increased text size */}
+                      <div className="text-base leading-relaxed">{msg.text}</div>
                     </div>
                   </motion.div>
                 ))}
@@ -95,14 +94,14 @@ export default function Chatbox({
             </div>
 
             {/* Input */}
-            <div className="p-4 border-t border-gray-200 bg-black rounded-b-2xl">
+            <div className="p-4 border-t border-gray-200 bg-slate-800 rounded-b-2xl">
               <div className="flex items-center space-x-3">
                 <input
                   type="text"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
-                  placeholder="Ask about solar panels..."
-                  className="flex-1 p-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none " // Increased padding and text size
+                  placeholder="Ask about your trip..."
+                  className="flex-1 p-3 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
                   onKeyDown={(e) => {
                     if (e.key === "Enter" && query.trim()) handleQuery();
                   }}
@@ -115,11 +114,11 @@ export default function Chatbox({
                   className={`p-3 rounded-full transition shadow-md ${
                     !query.trim()
                       ? "bg-gray-300 cursor-not-allowed"
-                      : "bg-gradient-to-r from-yellow-500 to-orange-500 text-white hover:shadow-lg"
+                      : "bg-gradient-to-r from-cyan-500 to-blue-500 text-white hover:shadow-lg"
                   }`}
                 >
                   <svg
-                    className="w-6 h-6" // Increased icon size
+                    className="w-6 h-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -133,8 +132,8 @@ export default function Chatbox({
                   </svg>
                 </motion.button>
               </div>
-              <p className="text-xs text-gray-500 mt-3 text-center">
-                Need help? Our solar experts are here 🌞
+              <p className="text-xs text-gray-400 mt-3 text-center">
+                Your next adventure starts here 🌍
               </p>
             </div>
           </motion.div>
@@ -146,12 +145,12 @@ export default function Chatbox({
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsChatOpen(!isChatOpen)}
-        className="bg-gradient-to-r from-yellow-500 to-orange-500 text-white p-5 rounded-full shadow-xl hover:shadow-2xl transition duration-300 flex items-center justify-center"
-        style={{ width: "72px", height: "72px" }} // Increased button size
+        className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white p-5 rounded-full shadow-xl hover:shadow-2xl transition duration-300 flex items-center justify-center"
+        style={{ width: "72px", height: "72px" }}
       >
         {isChatOpen ? (
           <svg
-            className="w-7 h-7" // Increased icon size
+            className="w-7 h-7"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -165,7 +164,7 @@ export default function Chatbox({
           </svg>
         ) : (
           <svg
-            className="w-7 h-7" // Increased icon size
+            className="w-7 h-7"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

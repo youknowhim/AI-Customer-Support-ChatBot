@@ -1,135 +1,124 @@
-# 🤖 Gemini RAG Q&A System
+\
+✈️ TravelWise AI Chatbot
+Video-Link: https://drive.google.com/file/d/18nLNdb7wcGBm0QivukVxu1OAsBZoLAqe/view?usp=sharing
+A smart, production-ready AI customer support chatbot for the travel and tourism industry. Built with a complete backend API, database persistence, and a beautiful, user-friendly UI.
 
-A modern, production-ready RAG (Retrieval-Augmented Generation) Q&A application with a complete backend API, database persistence, and beautiful UI.
+✨ Features
+🎨 Beautiful & Intuitive UI
+Floating Chatbox: An elegant and accessible chatbox in the bottom-right corner of your site.
 
-![Next.js](https://img.shields.io/badge/Next.js-15.5-black?logo=next.js)
-![React](https://img.shields.io/badge/React-19.1-blue?logo=react)
-![Prisma](https://img.shields.io/badge/Prisma-6.1-2D3748?logo=prisma)
-![Gemini](https://img.shields.io/badge/Gemini-2.5%20Flash-4285F4?logo=google)
+Information Page: A beautiful landing page with a gradient background to provide system information.
 
-## ✨ Features
+Responsive Design: Flawless user experience on desktops, tablets, and mobile devices.
 
-### 🎨 Beautiful UI
-- **Floating Chatbox**: Elegant chatbox in the bottom-right corner
-- **Information Page**: Beautiful gradient background with system information
-- **Responsive Design**: Works on all screen sizes
-- **Modern Aesthetics**: Purple/pink gradient theme with smooth animations
+Modern Aesthetics: A sleek purple/pink gradient theme with smooth, welcoming animations.
 
-### 🔧 Complete Backend
-- **REST API**: 8 comprehensive endpoints for all operations
-- **Database Persistence**: All sessions and queries saved to database
-- **Session Tracking**: Full session management with query history
-- **Performance Monitoring**: Processing time tracked for each query
+🧠 Intelligent Customer Support
+Instant, 24/7 Answers: Provides immediate responses to customer queries at any time of day.
 
-### 🧠 AI-Powered
-- **LLM-as-Retriever**: Uses Gemini AI for both retrieval and generation
-- **Context Grounding**: Answers strictly based on document content
-- **Smart Extraction**: Automatically identifies 3-4 most relevant paragraphs
-- **Retry Logic**: Exponential backoff with up to 5 retry attempts
+Handles Diverse Queries: Expertly answers questions about tour packages, pricing, cancellations, booking procedures, and destination info.
 
-### 📊 Analytics
-- **Query History**: All Q&A pairs stored with context
-- **Error Logging**: Failed queries tracked with error messages
-- **Performance Metrics**: Processing time for every query
-- **Database UI**: Visual database browser with Prisma Studio
+Context-Aware: Understands conversation flow to provide relevant and accurate information based on your travel data.
 
-## 🚀 Quick Start
+Reduces Support Load: Automates responses to frequently asked questions, freeing up your human agents for complex issues.
 
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
+🔧 Robust Backend & Analytics
+REST API: 8 comprehensive endpoints for managing chat sessions and queries.
 
-### Installation
+Database Persistence: All conversations are saved to a database for review and analysis.
 
-1. **Install dependencies**
-   ```bash
-   npm install
-   ```
+Session Tracking: Full session management with complete query history for each user.
 
-2. **Set up environment variables**
-   
-   Update `.env` file with your Gemini API key:
-   ```env
-   DATABASE_URL="file:./dev.db"
-   GEMINI_API_KEY="your-api-key-here"
-   ```
+Performance Monitoring: Tracks the processing time for each query to ensure a speedy user experience.
 
-3. **Initialize database**
-   ```bash
-   npx prisma generate
-   npx prisma db push
-   ```
+🚀 Quick Start
+Prerequisites
+Node.js 18+
 
-4. **Start development server**
-   ```bash
-   npm run dev
-   ```
+npm or yarn
 
-5. **Open the app**
-   ```
-   http://localhost:3000
-   ```
+Installation
+Install dependencies
 
-## 📁 Project Structure
+Bash
 
-```
-unthinkable-master/
+npm install
+Set up environment variables
+
+Update the .env file with your Gemini API key:
+
+Code snippet
+
+DATABASE_URL="file:./dev.db"
+GEMINI_API_KEY="your-api-key-here"
+Initialize database
+
+Bash
+
+npx prisma generate
+npx prisma db push
+Start development server
+
+Bash
+
+npm run dev
+Open the app
+
+http://localhost:3000
+📁 Project Structure
+travelwise-ai-main/
 ├── app/
-│   ├── api/                    # Backend REST API
-│   │   ├── sessions/           # Session management endpoints
-│   │   ├── query/              # Query processing endpoints
-│   │   └── document/           # Document loading endpoints
-│   ├── page.js                 # Main UI (chatbox & info page)
-│   ├── layout.js               # App layout
-│   └── globals.css             # Global styles
+│   ├── api/              # Backend REST API
+│   │   ├── sessions/     # Session management endpoints
+│   │   ├── query/        # Query processing endpoints
+│   │   └── document/     # Document loading endpoints
+│   ├── page.js           # Main UI (chatbox & info page)
+│   ├── layout.js         # App layout
+│   └── globals.css       # Global styles
 ├── lib/
-│   ├── db.js                   # Prisma database client
-│   └── llm.js                  # LLM utility functions
+│   ├── db.js             # Prisma database client
+│   └── llm.js            # LLM utility functions
 ├── prisma/
-│   ├── schema.prisma           # Database schema
-│   └── dev.db                  # SQLite database (generated)
-├── .env                        # Environment variables
-├── package.json                # Dependencies
-├── API_DOCUMENTATION.md        # API reference
-├── SETUP_GUIDE.md             # Detailed setup guide
-├── ARCHITECTURE.md            # System architecture
-└── README.md                   # This file
-```
+│   ├── schema.prisma     # Database schema
+│   └── dev.db            # SQLite database (generated)
+├── .env                  # Environment variables
+├── package.json          # Dependencies
+├── API_DOCUMENTATION.md  # API reference
+└── README.md             # This file
+🔌 API Endpoints
+Session Management
+POST /api/sessions - Create new session
 
-## 🔌 API Endpoints
+GET /api/sessions - List all sessions
 
-### Session Management
-- `POST /api/sessions` - Create new session
-- `GET /api/sessions` - List all sessions
-- `GET /api/sessions/[id]` - Get specific session
-- `PATCH /api/sessions/[id]` - Update session
-- `DELETE /api/sessions/[id]` - Delete session
+GET /api/sessions/[id] - Get specific session
 
-### Document Management
-- `POST /api/document/load` - Load and index document
+DELETE /api/sessions/[id] - Delete session
 
-### Query Processing
-- `POST /api/query` - Process RAG query
-- `GET /api/query?sessionId=xxx` - Get query history
+Document Management
+POST /api/document/load - Load and index travel data
 
-**See [API_DOCUMENTATION.md](./API_DOCUMENTATION.md) for detailed API reference.**
+Query Processing
+POST /api/query - Process a customer query
 
-## 💾 Database Schema
+GET /api/query?sessionId=xxx - Get query history for a session
 
-### Session Table
-```sql
+See API_DOCUMENTATION.md for detailed API reference.
+
+💾 Database Schema
+Session Table
+SQL
+
 Session {
   id              String (Primary Key)
   documentChunks  Int
-  isActive        Boolean
   createdAt       DateTime
   updatedAt       DateTime
   queries         Query[]
 }
-```
+Query Table
+SQL
 
-### Query Table
-```sql
 Query {
   id              String (Primary Key)
   sessionId       String (Foreign Key)
@@ -138,114 +127,69 @@ Query {
   answer          String
   processingTime  Int
   errorMessage    String?
-  isLoading       Boolean
   createdAt       DateTime
 }
-```
+🎯 How It Works
+Visitor lands on your travel website → The frontend creates a new chat session.
 
-## 🧪 Testing
+Knowledge Base is Loaded → The chatbot is pre-loaded with your travel & tourism data (FAQs, package details, policies).
 
-### Test the API
-```bash
-node test-api.js
-```
+Visitor asks a question → The question is sent to the backend API (e.g., "How much is the Bali package?").
 
-### View Database
-```bash
-npx prisma studio
-```
-Opens at http://localhost:5555
+Backend Processes the Query:
 
-### Example API Call
-```bash
-curl -X POST http://localhost:3000/api/sessions \
-  -H "Content-Type: application/json" \
-  -d '{"documentChunks": 0}'
-```
+Uses Gemini AI to find the most relevant information from the knowledge base.
 
-## 🎯 How It Works
+Uses Gemini AI again to generate a helpful, natural-sounding answer from that context.
 
-1. **User opens the app** → Frontend creates a session
-2. **Document is loaded** → Split into chunks, saved to database
-3. **User asks a question** → Sent to backend API
-4. **Backend processes**:
-   - Uses LLM to extract relevant context
-   - Uses LLM to generate answer from context
-   - Saves query to database
-5. **Answer displayed** → User sees the response
-6. **Everything persisted** → All data saved for analytics
+Saves the question, context, and answer to the database.
 
-## 🛠️ Technology Stack
+Answer is displayed in the chatbox → The visitor receives a quick and accurate response.
 
-- **Frontend**: React 19, Next.js 15, Tailwind CSS
-- **Backend**: Next.js API Routes
-- **Database**: SQLite (dev), Prisma ORM
-- **AI**: Google Gemini 2.5 Flash
-- **Styling**: Tailwind CSS 4
+🛠️ Technology Stack
+Frontend: React 19, Next.js 15, Tailwind CSS
 
-## 📖 Documentation
+Backend: Next.js API Routes
 
-- **[API_DOCUMENTATION.md](./API_DOCUMENTATION.md)** - Complete API reference
-- **[SETUP_GUIDE.md](./SETUP_GUIDE.md)** - Detailed setup instructions
-- **[ARCHITECTURE.md](./ARCHITECTURE.md)** - System architecture diagrams
-- **[IMPLEMENTATION_SUMMARY.md](./IMPLEMENTATION_SUMMARY.md)** - Implementation overview
+Database: SQLite (dev), Prisma ORM
 
-## 🔐 Security
+AI: Google Gemini 2.5 Flash
 
-- ✅ API keys stored server-side only
-- ✅ Environment variable configuration
-- ✅ Input validation on all endpoints
-- ✅ SQL injection protection (Prisma ORM)
-- ✅ Sanitized error messages
+Styling: Tailwind CSS 4
 
-## 📈 Performance
+📖 Documentation
+API_DOCUMENTATION.md - Complete API reference
 
-- **Retry Logic**: Exponential backoff (up to 5 attempts)
-- **Performance Tracking**: All queries timed
-- **Error Logging**: Comprehensive error tracking
-- **Database Indexes**: Optimized queries
+SETUP_GUIDE.md - Detailed setup instructions
 
-## 🚀 Production Deployment
+ARCHITECTURE.md - System architecture diagrams
 
-Before deploying to production:
+🔐 Security
+✅ API keys are stored securely on the server-side.
 
-1. **Switch to PostgreSQL**
-   ```env
-   DATABASE_URL="postgresql://user:password@host:5432/db"
-   ```
+✅ Environment variables for configuration.
 
-2. **Add Redis for caching**
-3. **Implement rate limiting**
-4. **Add user authentication**
-5. **Configure CORS properly**
-6. **Set up monitoring (e.g., Sentry)**
-7. **Enable connection pooling**
+✅ Input validation on all API endpoints.
 
-## 🤝 Contributing
+✅ SQL injection protection via Prisma ORM.
 
+🚀 Production Deployment
+Before deploying to a live environment:
+
+Switch to a robust database like PostgreSQL.
+
+Implement rate limiting to prevent abuse.
+
+Configure CORS for your domain.
+
+Set up monitoring and logging services (e.g., Sentry).
+
+🤝 Contributing
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📝 License
-
+📝 License
 This project is licensed under the MIT License.
 
-## 🙏 Acknowledgments
-
-- Built with [Next.js](https://nextjs.org/)
-- Powered by [Google Gemini AI](https://ai.google.dev/)
-- Database with [Prisma](https://www.prisma.io/)
-- Styled with [Tailwind CSS](https://tailwindcss.com/)
-
-## 📞 Support
-
-For questions or issues:
-1. Check the [documentation files](./API_DOCUMENTATION.md)
-2. Run `npx prisma studio` to inspect database
-3. Check browser console for errors
-4. Review server logs
-
----
-
-**Status**: ✅ Production Ready
+Status: ✅ Ready to be deployed as a live Travel Support Chatbot.
 
 Built with ❤️ using Next.js, Prisma, and Gemini AI
