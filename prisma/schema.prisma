@@ -1,0 +1,55 @@
+// Prisma schema for RAG Q&A application
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Session model - tracks user sessions
+model Session {
+  id            String   @id @default(cuid())
+  documentChunks Int     @default(0) // Number of document chunks processed
+  isActive      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  
+  // Relations
+  queries       Query[]
+  
+  @@index([createdAt])
+}
+
+// Query model - tracks individual queries and responses
+model Query {
+  id            String   @id @default(cuid())
+  sessionId     String
+  question      String
+  context       String?  @default("") // Retrieved context used
+  answer        String?  @default("") // Generated answer
+  isLoading     Boolean  @default(false)
+  errorMessage  String?
+  processingTime Int?    // Time in milliseconds
+  
+  // Analytics and Feedback Fields
+  wasAnswered   Boolean  @default(true) // Did we provide a meaningful answer?
+  confidence    Float?   @default(1.0)  // Confidence score 0-1
+  userFeedback  String?  // "helpful", "unhelpful", "neutral"
+  feedbackNote  String?  // Optional user comment
+  isUnanswered  Boolean  @default(false) // Flag for unanswered questions
+  needsImprovement Boolean @default(false) // Flagged for knowledge base improvement
+  
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now()) @updatedAt
+  
+  // Relations
+  session       Session  @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  
+  @@index([sessionId])
+  @@index([createdAt])
+  @@index([isUnanswered])
+  @@index([needsImprovement])
+  @@index([wasAnswered])
+}
